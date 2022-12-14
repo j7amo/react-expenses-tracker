@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 import * as PropTypes from "prop-types";
 
-const ExpenseForm = ({ onAddExpenseData }) => {
+const ExpenseForm = ({ onAddExpenseData, onFormClose }) => {
   // one of the most common approaches of organizing state is using multi-state where
   // we have a separate state for any part of the component we want
 
@@ -35,6 +35,11 @@ const ExpenseForm = ({ onAddExpenseData }) => {
     setTitle("");
     setPrice("");
     setDate("");
+    onFormClose();
+  };
+
+  const formHideHandler = () => {
+    onFormClose();
   };
 
   // the alternative approach for organizing state is to use the object
@@ -115,6 +120,9 @@ const ExpenseForm = ({ onAddExpenseData }) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={formHideHandler}>
+          Cancel
+        </button>
         <button type="submit">Add expense</button>
       </div>
     </form>
@@ -123,6 +131,7 @@ const ExpenseForm = ({ onAddExpenseData }) => {
 
 ExpenseForm.propTypes = {
   onAddExpenseData: PropTypes.func,
+  onFormClose: PropTypes.func,
 };
 
 export default ExpenseForm;

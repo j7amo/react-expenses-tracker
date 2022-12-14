@@ -1,9 +1,10 @@
 import * as PropTypes from "prop-types";
 import { useState } from "react";
 import "./Expenses.css";
-import Card from "../../../shared/Card";
+import Card from "../../../shared/Card/Card";
 import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 import ExpensesList from "../ExpensesList/ExpensesList";
+import ExpensesChart from "../ExpensesChart/ExpensesChart";
 
 const Expenses = ({ items }) => {
   const [year, setYear] = useState("2020");
@@ -31,6 +32,7 @@ const Expenses = ({ items }) => {
           year={year}
           onExpensesFilterChange={expensesFilterChangeHandler}
         />
+        <ExpensesChart items={filteredExpenses} />
         {/*Here we use a trick with '&&' operator INSTEAD of ternary '...?...:...' to make code more readable*/}
         {/*{filteredExpenses.length === 0 && (*/}
         {/*  <p>No expenses for selected year found</p>*/}

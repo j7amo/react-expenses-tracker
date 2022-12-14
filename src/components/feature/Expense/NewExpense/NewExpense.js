@@ -1,8 +1,19 @@
 import "./NewExpense.css";
 import ExpenseForm from "../ExpenseForm/ExpenseForm";
 import * as PropTypes from "prop-types";
+import { useState } from "react";
 
 const NewExpense = ({ onAddExpenseData }) => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const showFormHandler = () => {
+    setIsFormOpen(true);
+  };
+
+  const hideFormHandler = () => {
+    setIsFormOpen(false);
+  };
+
   const addExpenseDataHandler = (expenseData) => {
     onAddExpenseData({
       ...expenseData,
@@ -12,7 +23,16 @@ const NewExpense = ({ onAddExpenseData }) => {
 
   return (
     <div className="new-expense">
-      <ExpenseForm onAddExpenseData={addExpenseDataHandler} />
+      {isFormOpen ? (
+        <ExpenseForm
+          onAddExpenseData={addExpenseDataHandler}
+          onFormClose={hideFormHandler}
+        />
+      ) : (
+        <button type="button" onClick={showFormHandler}>
+          Add new expense
+        </button>
+      )}
     </div>
   );
 };

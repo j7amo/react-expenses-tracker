@@ -1,7 +1,7 @@
 import "./ExpenseItem.css";
 import * as PropTypes from "prop-types";
 import ExpenseDate from "../ExpenseDate/ExpenseDate";
-import Card from "../../../shared/Card";
+import Card from "../../../shared/Card/Card";
 
 const ExpenseItem = ({ date, title, price }) => {
   return (

@@ -1,3 +1,4 @@
+import * as PropTypes from "prop-types";
 import ExpenseItem from "../ExpenseItem/ExpenseItem";
 import "./ExpensesList.css";
 
@@ -17,6 +18,10 @@ const ExpensesList = ({ expenses }) => {
       })}
     </ul>
   );
+};
+
+ExpensesList.propTypes = {
+  expenses: PropTypes.array,
 };
 
 export default ExpensesList;
