@@ -2,24 +2,26 @@ import Expenses from "./components/feature/Expense/Expenses/Expenses";
 import NewExpense from "./components/feature/Expense/NewExpense/NewExpense";
 import { useState } from "react";
 
-// this is just an example of data we use prior to useState
-// const expenseItems = [
-//   {
-//     date: new Date(2000, 2, 3),
-//     title: "Book",
-//     price: 10,
-//   },
-//   {
-//     date: new Date(2010, 3, 4),
-//     title: "PC",
-//     price: 1000,
-//   },
-//   {
-//     date: new Date(2020, 4, 5),
-//     title: "Plane",
-//     price: 10000,
-//   },
-// ];
+const expenseItems = [
+  {
+    id: 1,
+    date: new Date(2019, 2, 3),
+    title: "Book",
+    price: 10,
+  },
+  {
+    id: 2,
+    date: new Date(2020, 3, 4),
+    title: "PC",
+    price: 1000,
+  },
+  {
+    id: 3,
+    date: new Date(2021, 4, 5),
+    title: "Plane",
+    price: 10000,
+  },
+];
 
 const App = () => {
   // although we do not explicitly import 'React' anymore in the newer versions of this library,
@@ -33,10 +35,10 @@ const App = () => {
   //   {},
   //   React.createElement(Expenses, { items: expenseItems })
   // );
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState(expenseItems);
 
   const addExpenseDataHandler = (newExpense) => {
-    setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
+    setExpenses((prevExpenses) => [newExpense, ...prevExpenses]);
   };
 
   return (
